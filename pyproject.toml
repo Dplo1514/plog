@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "plog"
+version = "0.1.0"
+description = "A RAG (Report, Analysis, Governance) project using Flask."
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+# flask
+flask = "^2.3"
+flask-sqlalchemy = "^3.0"
+flask-migrate = "^4.0"
+flask-restx = "^1.1"
+
+# langchain
+langchain = "^0.0.302"
+openai = "^0.28"  # OpenAI API 연동
+tiktoken = "^0.4"  # 토큰 계산기 (옵션)
+
+# database
+sqlalchemy = "^2.0"
+psycopg2 = "^2.9"  # PostgreSQL 연결용
+alembic = "^1.11"  # DB 마이그레이션
+
+# statics
+pandas = "^2.1"
+numpy = "^1.26"
+
+# reporting
+matplotlib = "^3.8"
+seaborn = "^0.13"
+plotly = "^5.17"  # 대화형 그래프
+
+# message broker
+celery = "^5.3"  # 작업 큐
+redis = "^5.0"   # 브로커로 사용 가능
+
+# test
+pytest = "^7.4"
+pytest-flask = "^1.2"
+coverage = "^7.3"
+flake8 = "^6.1"
+mypy = "^1.6"  # 타입 검사
+black = "^23.9"  # 코드 포맷터
+
+# utils
+requests = "^2.31"
+python-dotenv = "^1.0"
+loguru = "^0.7"
+fastapi = "^0.100"
+
+[build-system]
+requires = ["poetry-core>=1.5"]
+build-backend = "poetry.core.masonry.api"
