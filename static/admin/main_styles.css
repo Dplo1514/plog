@@ -1,0 +1,121 @@
+/* Reset & Base Styling */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #d3dce6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #2c3e50;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 50px;
+    width: 90%;
+    max-width: 500px; /* Increased max-width */
+}
+
+/* Header Styling */
+header {
+    margin-bottom: 20px;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #ecf0f1;
+    margin: 0;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid #95a5a6;
+    padding: 5px;
+}
+
+/* Button Group Styling */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn {
+    background: #3498db;
+    color: #ecf0f1;
+    font-size: 1rem;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn.secondary {
+    background: #34495e;
+    color: #ecf0f1;
+    border: 2px solid #95a5a6;
+}
+
+.btn.secondary:hover {
+    background: #2c3e50;
+}
+
+/* Admin-specific styles */
+.admin {
+    background-color: #1a252f;
+}
+
+.admin .container {
+    background: #34495e;
+    border: 2px solid #2c3e50;
+}
+
+.admin h1 {
+    color: #bdc3c7;
+}
+
+.admin .btn {
+    background: #7f8c8d;
+    color: #ecf0f1;
+}
+
+.admin .btn:hover {
+    background: #636e72;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px; /* Adjusted for smaller screens */
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
