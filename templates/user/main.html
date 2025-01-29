@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='user/main_styles.css') }}">
+</head>
+<body class="user">
+<div class="container">
+    <header>
+        <div class="header-content">
+            <img src="{{ url_for('static', filename='image/main.png') }}" alt="Dog with Laptop" class="logo">
+            <h1>Welcome to Plog</h1>
+        </div>
+    </header>
+    <main>
+        <div class="button-group">
+            <button class="btn" onclick="location.href='/user/login'">Log In</button>
+            <button class="btn secondary" onclick="location.href='/user/signup'">Sign Up</button>
+        </div>
+    </main>
+</div>
+</body>
+</html>
