@@ -15,9 +15,11 @@ flask-migrate = "^4.0"
 flask-restx = "^1.1"
 
 # langchain
-langchain = "^0.0.302"
-openai = "^0.28"  # OpenAI API 연동
-tiktoken = "^0.4"  # 토큰 계산기 (옵션)
+langchain = ">=0.3.16,<0.4.0"
+langchain-community = ">=0.3.0"
+langchain-core = ">=0.3.32,<0.4.0"
+openai = "^1.1.0"
+tiktoken = "^0.5.2"
 
 # database
 sqlalchemy = "^2.0"
