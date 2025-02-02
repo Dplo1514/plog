@@ -1,13 +1,14 @@
 [tool.poetry]
 name = "plog"
 version = "0.1.0"
-description = "A RAG (Report, Analysis, Governance) project using Flask."
-authors = ["Your Name <your.email@example.com>"]
+description = "RAG project using Flask"
+authors = ["plo <dladlsgur3334@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+
 # flask
 flask = "^2.3"
 flask-sqlalchemy = "^3.0"
@@ -23,8 +24,8 @@ tiktoken = "^0.5.2"
 
 # database
 sqlalchemy = "^2.0"
-psycopg2 = "^2.9"  # PostgreSQL 연결용
-alembic = "^1.11"  # DB 마이그레이션
+psycopg2-binary = "^2.9"
+alembic = "^1.11"
 
 # statics
 pandas = "^2.1"
@@ -33,19 +34,19 @@ numpy = "^1.26"
 # reporting
 matplotlib = "^3.8"
 seaborn = "^0.13"
-plotly = "^5.17"  # 대화형 그래프
+plotly = "^5.17"
 
 # message broker
-celery = "^5.3"  # 작업 큐
-redis = "^5.0"   # 브로커로 사용 가능
+celery = "^5.3"
+redis = "^5.0"
 
 # test
 pytest = "^7.4"
 pytest-flask = "^1.2"
 coverage = "^7.3"
 flake8 = "^6.1"
-mypy = "^1.6"  # 타입 검사
-black = "^23.9"  # 코드 포맷터
+mypy = "^1.6"
+black = "^23.9"
 
 # utils
 requests = "^2.31"

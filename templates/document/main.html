@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chunked File Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='document/main.css') }}">
+</head>
+<body class="upload-page">
+<div class="container">
+    <header>
+        <h1>Upload Your Files</h1>
+        <p class="subtitle">Files will be uploaded in chunks</p>
+    </header>
+    <main>
+        <form id="upload-form" enctype="multipart/form-data" class="upload-form">
+            <input type="file" name="files" id="file" multiple required class="file-input">
+            <button type="submit" class="upload-btn">Upload Files</button>
+        </form>
+        <div class="progress-container"></div>
+    </main>
+</div>
+<script src="{{ url_for('static', filename='document/main.js') }}"></script>
+</body>
+</html>

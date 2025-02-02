@@ -5,11 +5,11 @@ services:
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
-      - POSTGRES_DB=mydatabase
+      - POSTGRES_DB=plog
     ports:
       - "5432:5432"
     networks:
-      - app-network
+      - plog-network
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -23,12 +23,12 @@ services:
       - "9200:9200"
       - "9300:9300"
     networks:
-      - app-network
+      - plog-network
     volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data
 
 networks:
-  app-network:
+  plog-network:
     driver: bridge
 
 volumes:
