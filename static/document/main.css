@@ -1,0 +1,241 @@
+/* 전체 스타일 */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #1a252f;
+    color: #ecf0f1;
+    margin-top: 2%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 90vh;
+    min-width: 90vw;
+}
+
+.container {
+    background: #2c3e50;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 900px;
+    padding: 30px;
+    text-align: center;
+    min-height: 80vh;
+    min-width: 80vw;
+    overflow-y: auto;
+}
+
+/* 헤더 스타일 */
+.header {
+    display: flex;
+    justify-content: space-between; /* 헤더 좌우 정렬 */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* 버튼 공통 스타일 */
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* 업로드 버튼 스타일 */
+.upload-btn {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.upload-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* 검색 버튼 스타일 */
+.search-btn {
+    background: #2ecc71;
+    color: #fff;
+    border: none;
+}
+
+.search-btn:hover {
+    background: #27ae60;
+}
+
+/* 검색 바 스타일 */
+.search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-bar input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #95a5a6;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #34495e;
+}
+
+.search-bar input::placeholder {
+    color: #95a5a6;
+}
+
+/* 테이블 스타일 */
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #34495e;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #ecf0f1;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #34495e;
+}
+
+th {
+    background-color: #34495e;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #2c3e50;
+}
+
+/* 모달 CSS */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: #16213e;
+    border-radius: 15px;
+    padding: 50px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #e0e0e0;
+}
+
+.modal-content header {
+    margin-bottom: 20px;
+}
+
+.modal-content h1 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.modal-content .subtitle {
+    font-size: 1rem;
+    color: #a5a5a5;
+    margin-top: 5px;
+}
+
+.modal-content .upload-form {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.modal-content .file-input {
+    padding: 12px;
+    border: 2px solid #0f3460;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: border 0.3s;
+}
+
+.modal-content .file-input:hover {
+    border: 2px solid #3498db;
+}
+
+.modal-content .upload-btn {
+    background: #3498db;
+    color: #fff;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.modal-content .upload-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.8rem;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+/* 페이지네이션 스타일 */
+#pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.page-btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 2px solid #3498db;
+    color: #3498db;
+    background: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-btn:hover {
+    background: #3498db;
+    color: white;
+}
+
+.page-btn.active {
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
