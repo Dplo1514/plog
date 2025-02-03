@@ -1,9 +1,19 @@
+import os
+import signal
+import subprocess
+import sys
+import time
+
 from flask import Flask, redirect
 from server.admin.controllers.admin_controller import router as admin_router
 from server.common.exception import register_error_handlers
 from server.user.controllers.user_controller import router as user_router
-from server.document.controllers.view_controller import router as document_router
-from server.document.controllers.api_controller import router as document_api_router
+from server.document.controllers.view_controller import \
+    router as document_router
+from server.document.controllers.api_controller import \
+    router as document_api_router
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 
 app = Flask(__name__)
 
@@ -20,8 +30,7 @@ def register_router(_app):
     _app.register_blueprint(document_api_router)
 
 
-
 if __name__ == '__main__':
     register_router(app)
     register_error_handlers(app)
-    app.run()
+    app.run(debug=True, use_reloader=False)

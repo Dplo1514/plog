@@ -1,25 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chunked File Upload</title>
+    <title>문서 관리</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='document/main.css') }}">
+    <script src="{{ url_for('static', filename='document/main.js') }}" defer></script>
 </head>
-<body class="upload-page">
+<body>
 <div class="container">
-    <header>
-        <h1>Upload Your Files</h1>
-        <p class="subtitle">Files will be uploaded in chunks</p>
+    <header class="header">
+        <h1>📁 문서 목록</h1>
+        <button class="btn upload-btn" onclick="openUploadModal()">📤 문서 업로드</button>
     </header>
-    <main>
-        <form id="upload-form" enctype="multipart/form-data" class="upload-form">
-            <input type="file" name="files" id="file" multiple required class="file-input">
-            <button type="submit" class="upload-btn">Upload Files</button>
-        </form>
-        <div class="progress-container"></div>
-    </main>
+
+    <div class="search-bar">
+        <input type="text" id="search" placeholder="🔍 검색어 입력">
+        <button class="btn search-btn" onclick="loadDocuments(1)">검색</button>
+    </div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>이름</th>
+                <th>경로</th>
+                <th>상태</th>
+                <th>생성일</th>
+                <th>수정일</th>
+            </tr>
+            </thead>
+            <tbody id="document-list"></tbody>
+        </table>
+    </div>
+
+    <div id="pagination"></div>
 </div>
-<script src="{{ url_for('static', filename='document/main.js') }}"></script>
+
+<div id="uploadModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeUploadModal()">&times;</span>
+        <header>
+            <h1>Upload Your Files</h1>
+            <p class="subtitle">Files will be uploaded in chunks</p>
+        </header>
+        <main>
+            <form id="upload-form" enctype="multipart/form-data" class="upload-form">
+                <input type="file" name="files" id="file" multiple required class="file-input">
+                <button type="submit" class="upload-btn">Upload Files</button>
+            </form>
+            <div class="progress-container"></div>
+        </main>
+    </div>
+</div>
 </body>
 </html>

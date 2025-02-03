@@ -17,9 +17,9 @@ router: Blueprint = Blueprint(
 
 @router.route("/upload", methods=["POST"])
 def upload_chunk() -> Response:
-    filename: str = request.headers.get("X-File-Name", "")
-    total_size: int = int(request.headers.get("X-File-Size", 0))
-    chunk_size: int = int(request.headers.get("X-Chunk-Size", 1024 * 1024))
+    filename: str = request.form.get("file_name", "")
+    total_size: int = int(request.form.get("file_size", 0))
+    chunk_size: int = int(request.form.get("chunk_size", 1024 * 1024))
 
     if not filename or total_size == 0:
         return jsonify({"error": "Invalid request"}), 400
@@ -55,8 +55,8 @@ def get_documents():
                     "name": doc.name,
                     "path": doc.path,
                     "status": doc.status.value,
-                    "created_at": doc.created_at,
-                    "modified_at": doc.modified_at
+                    "created_at": doc.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+                    "modified_at": doc.modified_at.strftime("%Y-%m-%d %H:%M:%S")
                 }
                 for doc in documents
             ]
