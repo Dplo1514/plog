@@ -14,13 +14,12 @@ from server.common.status import BaseStatus, CommonStatus
 class AppException(Exception):
     def __init__(
         self,
-        http_status: HTTPStatus,
         status: BaseStatus,
         exception: Optional[Exception] = None,
         data: Any = None
     ):
-        self.http_status = http_status
         self.exception = exception
+        self.http_status = status.http_status
         self.response = Response(
             code=status.code,
             message=status.message,
@@ -34,7 +33,6 @@ def exception_handler(logging_func, http_status: int, response: Response):
 
 
 def http_exception_logging(exc: AppException):
-    """ HTTP 예외 로깅 """
     log_data = {
         "url": request.url,
         "method": request.method,

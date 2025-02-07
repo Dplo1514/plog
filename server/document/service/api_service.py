@@ -6,12 +6,14 @@ from typing import Generator
 from flask import request, stream_with_context
 
 from server.common.database import make_session
+from server.document.controllers.request.vo.vo import UploadFileVo
+from server.document.controllers.request.dto.dto import UploadFileDTO
 from server.document.models.document import Document, DocumentStatus
 
 UPLOAD_FOLDER = "document"
 
 
-def handle_upload(filename: str, total_size: int, chunk_size: int):
+def handle_upload(vo :UploadFileVo):
     """
     파일을 chunk 단위로 저장하면서 진행률을 반환.
     업로드 도중 오류가 발생하면 미완성 파일을 삭제함.
@@ -21,13 +23,14 @@ def handle_upload(filename: str, total_size: int, chunk_size: int):
     :param chunk_size: 업로드할 chunk 크기 (바이트 단위)
     :return: Flask Response (Server-Sent Events)
     """
+    filename = vo.file_name
     file_uuid: str = str(uuid.uuid4())
     file_path: str = os.path.join(UPLOAD_FOLDER, filename)
 
     chunks = _save_file_chunks(
         file_path,
-        chunk_size,
-        total_size,
+        vo.chunk_size,
+        vo.file_size,
         filename,
         file_uuid
     )
