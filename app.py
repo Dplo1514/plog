@@ -1,19 +1,12 @@
-import os
-import signal
-import subprocess
-import sys
-import time
-
 from flask import Flask, redirect
+
 from server.admin.controllers.admin_controller import router as admin_router
 from server.common.exception import register_error_handlers
-from server.user.controllers.user_controller import router as user_router
-from server.document.controllers.view_controller import \
-    router as document_router
 from server.document.controllers.api_controller import \
     router as document_api_router
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
+from server.document.controllers.view_controller import \
+    router as document_router
+from server.user.controllers.user_controller import router as user_router
 
 app = Flask(__name__)
 

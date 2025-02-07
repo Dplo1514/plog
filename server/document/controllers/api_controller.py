@@ -1,10 +1,14 @@
-import os
-
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request
 from sqlalchemy import text
 
 from server.common.database import make_session
 from server.common.response import Response
+from server.document.controllers.request.vo.factory import \
+    upload_file_vo_factory
+from server.document.controllers.request.vo.vo import UploadFileVo
+from server.document.controllers.request.dto.dto import UploadFileDTO
+from server.document.controllers.validator.api_validator import \
+    validate_upload_request
 from server.document.models import Document
 from server.document.service.api_service import handle_upload
 
@@ -16,20 +20,19 @@ router: Blueprint = Blueprint(
 
 
 @router.route("/upload", methods=["POST"])
-def upload_chunk() -> Response:
-    filename: str = request.form.get("file_name", "")
-    total_size: int = int(request.form.get("file_size", 0))
-    chunk_size: int = int(request.form.get("chunk_size", 1024 * 1024))
-
-    if not filename or total_size == 0:
-        return jsonify({"error": "Invalid request"}), 400
-
-    filename = os.path.basename(filename)
-    return handle_upload(filename, total_size, chunk_size)
+def upload_chunk() -> dict:
+    request_dto: UploadFileDTO = UploadFileDTO(
+        file_name=request.form.get("file_name", ""),
+        chunk_size=int(request.form.get("chunk_size", 0)),
+        file_size=int(request.form.get("file_size", 0)),
+    )
+    validate_upload_request(request_dto)
+    vo: UploadFileVo = upload_file_vo_factory(request_dto)
+    return handle_upload(vo)
 
 
 @router.route("/list", methods=["GET"])
-def get_documents():
+def get_documents() -> dict:
     try:
         page = int(request.args.get("page", 1))
         per_page = int(request.args.get("per_page", 10))
