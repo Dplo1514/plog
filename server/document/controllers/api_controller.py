@@ -10,6 +10,7 @@ from server.document.controllers.request.dto.dto import UploadFileDTO
 from server.document.controllers.validator.api_validator import \
     validate_upload_request
 from server.document.models import Document
+from server.document.models.document import DocumentStatus
 from server.document.service.api_service import handle_upload
 
 router: Blueprint = Blueprint(
@@ -37,17 +38,22 @@ def get_documents() -> dict:
         page = int(request.args.get("page", 1))
         per_page = int(request.args.get("per_page", 10))
         search_query = request.args.get("q", "").strip()
+        status = request.args.get("status", "").upper()  # 🔹 status 파라미터를 대문자로 변환
 
         session = make_session()
         query = session.query(Document)
 
+        # ✅ 상태 필터 적용
+        if status and status in DocumentStatus.__members__:
+            query = query.filter(Document.status == DocumentStatus[status])
+
+        # ✅ 검색어 필터 적용
         if search_query:
-            query = query.filter(
-                text("to_tsvector('simple', name) @@ to_tsquery(:q)")).params(
-                q=search_query)
+            query = query.filter(text("to_tsvector('simple', name) @@ to_tsquery(:q)")).params(q=search_query)
 
         total_count = query.count()
         documents = query.offset((page - 1) * per_page).limit(per_page).all()
+
         data = {
             "total": total_count,
             "page": page,
@@ -57,7 +63,7 @@ def get_documents() -> dict:
                     "id": str(doc.id),
                     "name": doc.name,
                     "path": doc.path,
-                    "status": doc.status.value,
+                    "status": doc.status.value,  # 🔹 Enum 값을 문자열로 변환
                     "created_at": doc.created_at.strftime("%Y-%m-%d %H:%M:%S"),
                     "modified_at": doc.modified_at.strftime("%Y-%m-%d %H:%M:%S")
                 }
@@ -67,7 +73,7 @@ def get_documents() -> dict:
 
         return Response(
             code=200,
-            message="ss",
+            message="Success",
             data=data
         ).model_dump()
 
