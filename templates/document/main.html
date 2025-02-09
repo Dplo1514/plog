@@ -10,13 +10,20 @@
 <body>
 <div class="container">
     <header class="header">
-        <h1>📁 문서 목록</h1>
-        <button class="btn upload-btn" onclick="openUploadModal()">📤 문서 업로드</button>
+        <h1>문서 목록</h1>
+        <button class="btn upload-btn" onclick="openUploadModal()">문서 업로드</button>
     </header>
 
     <div class="search-bar">
-        <input type="text" id="search" placeholder="🔍 검색어 입력">
+        <input type="text" id="search" placeholder="검색어 입력">
         <button class="btn search-btn" onclick="loadDocuments(1)">검색</button>
+    </div>
+    <div class="status-filter">
+        <button class="status-filter-btn active" data-status="">전체</button>
+        <button class="status-filter-btn" data-status="INIT">INIT</button>
+        <button class="status-filter-btn" data-status="CHUNKING">CHUNKING</button>
+        <button class="status-filter-btn" data-status="EMBEDDING">EMBEDDING</button>
+        <button class="status-filter-btn" data-status="INDEXING">INDEXING</button>
     </div>
 
     <div class="table-wrapper">

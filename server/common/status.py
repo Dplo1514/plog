@@ -9,7 +9,7 @@ class BaseStatus(Enum):
 
     def __new__(cls, http_status, code, message):
         obj = object.__new__(cls)
-        obj._value_ = code
+        obj.http_status = http_status
         obj.code = code
         obj.message = message
         return obj

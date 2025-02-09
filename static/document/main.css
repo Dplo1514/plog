@@ -239,3 +239,55 @@ tbody tr:nth-child(even) {
     font-weight: bold;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
+
+/* 필터 버튼 스타일 */
+.status-filter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.status-filter-btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 2px solid #3498db;
+    color: #3498db;
+    background: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.status-filter-btn:hover {
+    background: #3498db;
+    color: white;
+}
+
+.status-filter-btn.active {
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 문서 상태 색상 */
+.status-init {
+    color: #3498db;
+    font-weight: bold;
+}
+
+.status-chunking {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.status-embedding {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.status-indexing {
+    color: #2ecc71;
+    font-weight: bold;
+}
